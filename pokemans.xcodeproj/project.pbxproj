@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0194469E1D52492800C33AB0 /* Couchbase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194469D1D52492800C33AB0 /* Couchbase.swift */; };
+		01D52DC91D5B2A5B00AFF070 /* PokemansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D52DC81D5B2A5B00AFF070 /* PokemansTableViewController.swift */; };
 		01F107961D523DA600844061 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F107951D523DA600844061 /* AppDelegate.swift */; };
-		01F107981D523DA600844061 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F107971D523DA600844061 /* ViewController.swift */; };
 		01F1079B1D523DA600844061 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01F107991D523DA600844061 /* Main.storyboard */; };
 		01F1079D1D523DA600844061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01F1079C1D523DA600844061 /* Assets.xcassets */; };
 		01F107A01D523DA600844061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01F1079E1D523DA600844061 /* LaunchScreen.storyboard */; };
 		01F107AB1D523DA600844061 /* pokemansTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F107AA1D523DA600844061 /* pokemansTests.swift */; };
+		01F107B61D523E3900844061 /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F107B51D523E3900844061 /* CouchbaseLite.framework */; };
+		01F107B91D523E4D00844061 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F107B81D523E4D00844061 /* CFNetwork.framework */; };
+		01F107BB1D523E5300844061 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F107BA1D523E5300844061 /* Security.framework */; };
+		01F107BD1D523E5B00844061 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F107BC1D523E5B00844061 /* SystemConfiguration.framework */; };
+		01F107BF1D523E6400844061 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F107BE1D523E6400844061 /* libsqlite3.tbd */; };
+		01F107C11D523E6D00844061 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F107C01D523E6D00844061 /* libz.tbd */; };
+		01F107C61D52413600844061 /* Pokeman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F107C51D52413600844061 /* Pokeman.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,9 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0194469D1D52492800C33AB0 /* Couchbase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Couchbase.swift; sourceTree = "<group>"; };
+		01D52DC81D5B2A5B00AFF070 /* PokemansTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemansTableViewController.swift; sourceTree = "<group>"; };
 		01F107921D523DA600844061 /* pokemans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokemans.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F107951D523DA600844061 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		01F107971D523DA600844061 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		01F1079A1D523DA600844061 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01F1079C1D523DA600844061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01F1079F1D523DA600844061 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +45,14 @@
 		01F107A61D523DA600844061 /* pokemansTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pokemansTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F107AA1D523DA600844061 /* pokemansTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokemansTests.swift; sourceTree = "<group>"; };
 		01F107AC1D523DA600844061 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01F107B51D523E3900844061 /* CouchbaseLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CouchbaseLite.framework; sourceTree = "<group>"; };
+		01F107B81D523E4D00844061 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		01F107BA1D523E5300844061 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		01F107BC1D523E5B00844061 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		01F107BE1D523E6400844061 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		01F107C01D523E6D00844061 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		01F107C21D523EB800844061 /* -Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "-Bridging-Header.h"; sourceTree = "<group>"; };
+		01F107C51D52413600844061 /* Pokeman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokeman.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +60,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01F107C11D523E6D00844061 /* libz.tbd in Frameworks */,
+				01F107BF1D523E6400844061 /* libsqlite3.tbd in Frameworks */,
+				01F107BD1D523E5B00844061 /* SystemConfiguration.framework in Frameworks */,
+				01F107BB1D523E5300844061 /* Security.framework in Frameworks */,
+				01F107B91D523E4D00844061 /* CFNetwork.framework in Frameworks */,
+				01F107B61D523E3900844061 /* CouchbaseLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +79,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01D52DCA1D5B2A7B00AFF070 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				01D52DC81D5B2A5B00AFF070 /* PokemansTableViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		01F107891D523DA500844061 = {
 			isa = PBXGroup;
 			children = (
+				01F107C21D523EB800844061 /* -Bridging-Header.h */,
 				01F107941D523DA600844061 /* pokemans */,
 				01F107A91D523DA600844061 /* pokemansTests */,
 				01F107931D523DA600844061 /* Products */,
+				01F107B71D523E4D00844061 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,11 +111,13 @@
 			isa = PBXGroup;
 			children = (
 				01F107951D523DA600844061 /* AppDelegate.swift */,
-				01F107971D523DA600844061 /* ViewController.swift */,
 				01F107991D523DA600844061 /* Main.storyboard */,
+				01D52DCA1D5B2A7B00AFF070 /* ViewControllers */,
 				01F1079C1D523DA600844061 /* Assets.xcassets */,
 				01F1079E1D523DA600844061 /* LaunchScreen.storyboard */,
 				01F107A11D523DA600844061 /* Info.plist */,
+				01F107C71D52440B00844061 /* Model */,
+				0194469D1D52492800C33AB0 /* Couchbase.swift */,
 			);
 			path = pokemans;
 			sourceTree = "<group>";
@@ -94,6 +129,27 @@
 				01F107AC1D523DA600844061 /* Info.plist */,
 			);
 			path = pokemansTests;
+			sourceTree = "<group>";
+		};
+		01F107B71D523E4D00844061 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01F107B51D523E3900844061 /* CouchbaseLite.framework */,
+				01F107C01D523E6D00844061 /* libz.tbd */,
+				01F107BE1D523E6400844061 /* libsqlite3.tbd */,
+				01F107BC1D523E5B00844061 /* SystemConfiguration.framework */,
+				01F107BA1D523E5300844061 /* Security.framework */,
+				01F107B81D523E4D00844061 /* CFNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		01F107C71D52440B00844061 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01F107C51D52413600844061 /* Pokeman.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +257,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01F107981D523DA600844061 /* ViewController.swift in Sources */,
+				01D52DC91D5B2A5B00AFF070 /* PokemansTableViewController.swift in Sources */,
+				01F107C61D52413600844061 /* Pokeman.swift in Sources */,
+				0194469E1D52492800C33AB0 /* Couchbase.swift in Sources */,
 				01F107961D523DA600844061 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,10 +398,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LUR7MQTC5F;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = pokemans/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scalbatty.pokemans;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -353,10 +417,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LUR7MQTC5F;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = pokemans/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scalbatty.pokemans;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -408,6 +478,7 @@
 				01F107B11D523DA600844061 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01F107B21D523DA600844061 /* Build configuration list for PBXNativeTarget "pokemansTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +487,7 @@
 				01F107B41D523DA600844061 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
