@@ -11,30 +11,38 @@ import UIKit
 class PokemansTableViewController: UITableViewController {
     
     let couchbase = Couchbase.sharedInstance
-    var query:CBLQuery!
-    var pokemans:[Pokeman] = []
+    var query:CBLLiveQuery!
+    var pokemanIDs:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updatePokemans()
+        subscribeToPokemans()
     }
     
-    func updatePokemans() {
-        query = couchbase.pokemanView.createQuery()
+    func subscribeToPokemans() {
+        if let previousQuery = self.query {
+           previousQuery.stop()
+            previousQuery.removeObserver(self, forKeyPath: "rows")
+        }
+        let query = couchbase.pokemanView.createQuery()
         query.descending = false
+        let liveQuery = query.asLive()
         
-        print("Querying these pokemans !")
-        guard let result = try? query.run() else { fatalError("Query did fail") }
+        liveQuery.addObserver(self, forKeyPath: "rows", options: [.old, .new], context: nil)
+        liveQuery.start()
+        self.query = liveQuery
+    }
+    
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+        print("Query result did change!")
         
-        if let row = result.nextRow() {
-            pokemans = Array(sequence(first: row) { _ in result.nextRow() }.map { row in Pokeman(for: row.document!) })
-            tableView.reloadData()
+        let newRows = change![NSKeyValueChangeKey.newKey] as! CBLQueryEnumerator
+        pokemanIDs = newRows.map { row in
+            guard let row = row as? CBLQueryRow else { fatalError("Could not extract document")  }
+            return row.documentID!
         }
-        else {
-            pokemans = []
-            tableView.reloadData()
-        }
-
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,7 +53,6 @@ class PokemansTableViewController: UITableViewController {
     @IBAction func addButtonTapped(sender:AnyObject) {
         
         try! createPokeman(name: "NewTwo", type: "Newest", number: 12, in: couchbase.database)
-        updatePokemans()
     }
 
     // MARK: - Table view data source
@@ -53,14 +60,16 @@ class PokemansTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return pokemans.count
+        return pokemanIDs.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pokemanCell", for: indexPath)
 
-        let pokeman = pokemans[indexPath.row]
+        let pokemanID = pokemanIDs[indexPath.row]
+        let pokemanDocument = couchbase.database.document(withID: pokemanID)!
+        let pokeman = Pokeman(for:pokemanDocument)
         
         cell.textLabel?.text = pokeman.name
         cell.detailTextLabel?.text = pokeman.pokemonType

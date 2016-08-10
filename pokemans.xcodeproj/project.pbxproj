@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0194469E1D52492800C33AB0 /* Couchbase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194469D1D52492800C33AB0 /* Couchbase.swift */; };
 		01D52DC91D5B2A5B00AFF070 /* PokemansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D52DC81D5B2A5B00AFF070 /* PokemansTableViewController.swift */; };
+		01D52DCC1D5B3EC100AFF070 /* CBLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D52DCB1D5B3EC100AFF070 /* CBLExtensions.swift */; };
 		01F107961D523DA600844061 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F107951D523DA600844061 /* AppDelegate.swift */; };
 		01F1079B1D523DA600844061 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01F107991D523DA600844061 /* Main.storyboard */; };
 		01F1079D1D523DA600844061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01F1079C1D523DA600844061 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		0194469D1D52492800C33AB0 /* Couchbase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Couchbase.swift; sourceTree = "<group>"; };
 		01D52DC81D5B2A5B00AFF070 /* PokemansTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemansTableViewController.swift; sourceTree = "<group>"; };
+		01D52DCB1D5B3EC100AFF070 /* CBLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBLExtensions.swift; sourceTree = "<group>"; };
 		01F107921D523DA600844061 /* pokemans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokemans.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F107951D523DA600844061 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01F1079A1D523DA600844061 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				01F107A11D523DA600844061 /* Info.plist */,
 				01F107C71D52440B00844061 /* Model */,
 				0194469D1D52492800C33AB0 /* Couchbase.swift */,
+				01D52DCB1D5B3EC100AFF070 /* CBLExtensions.swift */,
 			);
 			path = pokemans;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			files = (
 				01D52DC91D5B2A5B00AFF070 /* PokemansTableViewController.swift in Sources */,
 				01F107C61D52413600844061 /* Pokeman.swift in Sources */,
+				01D52DCC1D5B3EC100AFF070 /* CBLExtensions.swift in Sources */,
 				0194469E1D52492800C33AB0 /* Couchbase.swift in Sources */,
 				01F107961D523DA600844061 /* AppDelegate.swift in Sources */,
 			);
