@@ -25,16 +25,18 @@ class PokemansTableViewController: UITableViewController {
             previousQuery.removeObserver(self, forKeyPath: "rows")
         }
         let query = couchbase.pokemanView.createQuery()
-        query.descending = false
+        query.descending = true
+        query.limit = 20
         let liveQuery = query.asLive()
         
         liveQuery.addObserver(self, forKeyPath: "rows", options: [.old, .new], context: nil)
         liveQuery.start()
         self.query = liveQuery
+        
+        couchbase.startReplications()
     }
     
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         print("Query result did change!")
         
         let newRows = change![NSKeyValueChangeKey.newKey] as! CBLQueryEnumerator
@@ -52,7 +54,7 @@ class PokemansTableViewController: UITableViewController {
     
     @IBAction func addButtonTapped(sender:AnyObject) {
         
-        try! createPokeman(name: "NewTwo", type: "Newest", number: 12, in: couchbase.database)
+        try! createPokeman(username: "NewTwo", pokeman: "Piafabec", place: "Gare de l'Est", in: couchbase.database)
     }
 
     // MARK: - Table view data source
@@ -69,10 +71,10 @@ class PokemansTableViewController: UITableViewController {
 
         let pokemanID = pokemanIDs[indexPath.row]
         let pokemanDocument = couchbase.database.document(withID: pokemanID)!
-        let pokeman = Pokeman(for:pokemanDocument)
+        let ping = Pokeping(for:pokemanDocument)
         
-        cell.textLabel?.text = pokeman.name
-        cell.detailTextLabel?.text = pokeman.pokemonType
+        cell.textLabel?.text = ping.pokemon
+        cell.detailTextLabel?.text = ping.date.description
 
         return cell
     }

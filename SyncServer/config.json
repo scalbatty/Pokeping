@@ -1,0 +1,16 @@
+{
+  "log":["CRUD+", "REST+", "Changes+", "Attach+"],
+  "databases": {
+    "pokemans": {
+      "server":"walrus:data",
+      "sync":`function (doc) {
+        channel (doc.channels);
+      }`,
+      "users": {
+        "GUEST": {
+          "disabled": false, "admin_channels": ["*"]
+        }
+      }
+    }
+  }
+}

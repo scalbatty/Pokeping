@@ -9,19 +9,28 @@
 import Foundation
 
 class Couchbase {
+    
+    private static let base_name = "pokemans"
+    private static let pokeman_type = "pokeman"
+    private static let pokeping_type = "pokeping"
+    private static let syncgateway_host = "http://localhost:4984/"
+    private static let syncgateway_address = syncgateway_host + base_name
+    private static let syncgateway_url = URL(string: syncgateway_address)!
+    
     private let manager: CBLManager
     let database: CBLDatabase
+    
     var pokemanView: CBLView {
-        let view = database.viewNamed("allPokemans")
+        let view = database.viewNamed("allPokepings")
         
         guard view.mapBlock == nil else { return view }
         
         view.setMapBlock({ (doc, emit) in
-            if let type = doc["type"] as? String, type == "pokeman",
-                let name = doc["name"] {
-                emit(name, nil)
+            if let type = doc["type"] as? String, type == Couchbase.pokeping_type,
+                let name = doc["pokemon"], let date = doc["date"] {
+                emit(date, name)
             }
-        }, version: "1")
+        }, version: "3")
         
         return view
     }
@@ -33,44 +42,59 @@ class Couchbase {
         self.manager = manager
         
         do {
-            let oldDatabase = try self.manager.databaseNamed("pokemans")
-            try oldDatabase.delete()
-            let database = try self.manager.databaseNamed("pokemans")
+//            let oldDatabase = try self.manager.databaseNamed(Couchbase.base_name)
+//            try oldDatabase.delete()
+            let database = try self.manager.databaseNamed(Couchbase.base_name)
             
             if let factory = database.modelFactory {
-                factory.registerClass(Pokeman.self, forDocumentType: "pokeman")
+                factory.registerClass(Pokeping.self, forDocumentType: Couchbase.pokeping_type)
             }
             
-            addSomePokemans(in: database)
-            
             self.database = database
+            
+            startReplications()
+            
+//            addSomePokemans(in: database)
         }
         catch let error as NSError {
             fatalError("Could not create database. Message: \(error.localizedDescription)")
         }
+    }
+    
+    public func startReplications() {
+        let pull = self.database.createPullReplication(Couchbase.syncgateway_url)
+        let push = self.database.createPushReplication(Couchbase.syncgateway_url)
+        
+        pull.continuous = true
+        push.continuous = true
+        
+        pull.start()
+        push.start()
     }
 }
 
 func addSomePokemans(in database:CBLDatabase) {
     
     do {
-        try createPokeman(name:"Roucouple", type:"Vol", number:2, in:database)
-        try createPokeman(name:"Bulbisou", type:"Calin", number:1, in:database)
-        try createPokeman(name:"Pikachok", type:"Electro", number:3, in:database)
+        try createPokeman(username:"Jean-Poulain", pokeman:"Roucool", place:"République", in:database)
+        try createPokeman(username:"Mireille Trauma", pokeman:"Rattatat", place:"Rue Quincampoix", in:database)
+        try createPokeman(username:"Machicouli", pokeman:"Pikachu", place:"Catacombes de Paris", in:database)
+        try database.saveAllModels()
     }
     catch let error as NSError {
         print("Could not save some pokemans: \(error.localizedDescription)")
     }
 }
 
-func createPokeman(name:String, type:String, number:Int?, in database:CBLDatabase) throws {
-    let pokeman = Pokeman(forNewDocumentIn: database)
+func createPokeman(username:String, pokeman:String, place:String, in database:CBLDatabase) throws {
+    let ping = Pokeping(forNewDocumentIn: database)
     
-    pokeman.name = name
-    pokeman.pokemonType = type
-    pokeman.pokedexNumber = number
+    ping.username = username
+    ping.pokemon = pokeman
+    ping.place = place
+    ping.date = Date()
     
-    try pokeman.save()
-    print("Saved this Pokeman! \(pokeman.document?.documentID) \(pokeman.document?.properties)")
+    try ping.save()
+    print("Saved this Pokeman! \(ping.document?.documentID) \(ping.document?.properties)")
 }
 

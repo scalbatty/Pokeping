@@ -8,9 +8,10 @@
 
 import Foundation
 
-@objc(Pokeman)
-class Pokeman : CBLModel {
-    @NSManaged var name: String!
-    @NSManaged var pokemonType: String!
-    @NSManaged var pokedexNumber: NSNumber!
+@objc(Pokeping)
+class Pokeping : CBLModel {
+    @NSManaged var username: String!
+    @NSManaged var pokemon: String!
+    @NSManaged var place: String!
+    @NSManaged var date: Date!
 }
