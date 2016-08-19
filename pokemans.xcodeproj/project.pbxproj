@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		01804D9A1D6730E40048A927 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01804D991D6730E40048A927 /* RxDataSources.framework */; };
 		01804D9C1D6736F20048A927 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01804D9B1D6736F20048A927 /* DataSource.swift */; };
+		01846CCB1D67543E00B706EF /* Pokemans.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01846CCA1D67543E00B706EF /* Pokemans.xcassets */; };
+		01846CCF1D67610600B706EF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01846CCE1D67610600B706EF /* Extensions.swift */; };
 		0194469E1D52492800C33AB0 /* Couchbase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194469D1D52492800C33AB0 /* Couchbase.swift */; };
-		01D52DC91D5B2A5B00AFF070 /* PokemansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D52DC81D5B2A5B00AFF070 /* PokemansTableViewController.swift */; };
+		01D52DC91D5B2A5B00AFF070 /* PokemansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D52DC81D5B2A5B00AFF070 /* PokemansViewController.swift */; };
 		01D52DCC1D5B3EC100AFF070 /* CBLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D52DCB1D5B3EC100AFF070 /* CBLExtensions.swift */; };
 		01D7DA131D65F1D9000458F6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D7DA0F1D65F1D9000458F6 /* RxCocoa.framework */; };
 		01D7DA141D65F1D9000458F6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D7DA101D65F1D9000458F6 /* RxSwift.framework */; };
@@ -42,8 +44,10 @@
 		01804D991D6730E40048A927 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		01804D9B1D6736F20048A927 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		01804D9D1D673FEE0048A927 /* Pokemans.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Pokemans.playground; sourceTree = "<group>"; };
+		01846CCA1D67543E00B706EF /* Pokemans.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Pokemans.xcassets; sourceTree = "<group>"; };
+		01846CCE1D67610600B706EF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0194469D1D52492800C33AB0 /* Couchbase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Couchbase.swift; sourceTree = "<group>"; };
-		01D52DC81D5B2A5B00AFF070 /* PokemansTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemansTableViewController.swift; sourceTree = "<group>"; };
+		01D52DC81D5B2A5B00AFF070 /* PokemansViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemansViewController.swift; sourceTree = "<group>"; };
 		01D52DCB1D5B3EC100AFF070 /* CBLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBLExtensions.swift; sourceTree = "<group>"; };
 		01D7DA0F1D65F1D9000458F6 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		01D7DA101D65F1D9000458F6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -93,10 +97,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01846CCC1D67544800B706EF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				01846CCA1D67543E00B706EF /* Pokemans.xcassets */,
+				01F1079C1D523DA600844061 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		01D52DCA1D5B2A7B00AFF070 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				01D52DC81D5B2A5B00AFF070 /* PokemansTableViewController.swift */,
+				01D52DC81D5B2A5B00AFF070 /* PokemansViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -125,16 +138,17 @@
 		01F107941D523DA600844061 /* pokemans */ = {
 			isa = PBXGroup;
 			children = (
+				01846CCC1D67544800B706EF /* Resources */,
 				01F107951D523DA600844061 /* AppDelegate.swift */,
 				01F107991D523DA600844061 /* Main.storyboard */,
 				01D52DCA1D5B2A7B00AFF070 /* ViewControllers */,
-				01F1079C1D523DA600844061 /* Assets.xcassets */,
 				01F1079E1D523DA600844061 /* LaunchScreen.storyboard */,
 				01F107A11D523DA600844061 /* Info.plist */,
 				01F107C71D52440B00844061 /* Model */,
 				0194469D1D52492800C33AB0 /* Couchbase.swift */,
 				01804D9B1D6736F20048A927 /* DataSource.swift */,
 				01D52DCB1D5B3EC100AFF070 /* CBLExtensions.swift */,
+				01846CCE1D67610600B706EF /* Extensions.swift */,
 			);
 			path = pokemans;
 			sourceTree = "<group>";
@@ -261,6 +275,7 @@
 				01F107A01D523DA600844061 /* LaunchScreen.storyboard in Resources */,
 				01F1079D1D523DA600844061 /* Assets.xcassets in Resources */,
 				01F1079B1D523DA600844061 /* Main.storyboard in Resources */,
+				01846CCB1D67543E00B706EF /* Pokemans.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,12 +313,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01D52DC91D5B2A5B00AFF070 /* PokemansTableViewController.swift in Sources */,
+				01D52DC91D5B2A5B00AFF070 /* PokemansViewController.swift in Sources */,
 				01804D9C1D6736F20048A927 /* DataSource.swift in Sources */,
 				01F107C61D52413600844061 /* Pokeman.swift in Sources */,
 				01D52DCC1D5B3EC100AFF070 /* CBLExtensions.swift in Sources */,
 				0194469E1D52492800C33AB0 /* Couchbase.swift in Sources */,
 				01F107961D523DA600844061 /* AppDelegate.swift in Sources */,
+				01846CCF1D67610600B706EF /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
