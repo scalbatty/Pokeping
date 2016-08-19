@@ -27,10 +27,10 @@ class Couchbase {
         
         view.setMapBlock({ (doc, emit) in
             if let type = doc["type"] as? String, type == Couchbase.pokeping_type,
-                let name = doc["pokemon"], let date = doc["date"] {
-                emit(date, name)
+                let date = doc["date"] {
+                emit(date, nil)
             }
-        }, version: "3")
+        }, version: "8")
         
         return view
     }
@@ -42,8 +42,6 @@ class Couchbase {
         self.manager = manager
         
         do {
-//            let oldDatabase = try self.manager.databaseNamed(Couchbase.base_name)
-//            try oldDatabase.delete()
             let database = try self.manager.databaseNamed(Couchbase.base_name)
             
             if let factory = database.modelFactory {
@@ -53,8 +51,6 @@ class Couchbase {
             self.database = database
             
             startReplications()
-            
-//            addSomePokemans(in: database)
         }
         catch let error as NSError {
             fatalError("Could not create database. Message: \(error.localizedDescription)")

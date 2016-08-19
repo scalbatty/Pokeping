@@ -15,3 +15,4 @@ class Pokeping : CBLModel {
     @NSManaged var place: String!
     @NSManaged var date: Date!
 }
+

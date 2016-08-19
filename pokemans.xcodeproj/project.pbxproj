@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01804D9A1D6730E40048A927 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01804D991D6730E40048A927 /* RxDataSources.framework */; };
+		01804D9C1D6736F20048A927 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01804D9B1D6736F20048A927 /* DataSource.swift */; };
 		0194469E1D52492800C33AB0 /* Couchbase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194469D1D52492800C33AB0 /* Couchbase.swift */; };
 		01D52DC91D5B2A5B00AFF070 /* PokemansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D52DC81D5B2A5B00AFF070 /* PokemansTableViewController.swift */; };
 		01D52DCC1D5B3EC100AFF070 /* CBLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D52DCB1D5B3EC100AFF070 /* CBLExtensions.swift */; };
+		01D7DA131D65F1D9000458F6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D7DA0F1D65F1D9000458F6 /* RxCocoa.framework */; };
+		01D7DA141D65F1D9000458F6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D7DA101D65F1D9000458F6 /* RxSwift.framework */; };
 		01F107961D523DA600844061 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F107951D523DA600844061 /* AppDelegate.swift */; };
 		01F1079B1D523DA600844061 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01F107991D523DA600844061 /* Main.storyboard */; };
 		01F1079D1D523DA600844061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01F1079C1D523DA600844061 /* Assets.xcassets */; };
@@ -35,9 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01804D991D6730E40048A927 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		01804D9B1D6736F20048A927 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		01804D9D1D673FEE0048A927 /* Pokemans.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Pokemans.playground; sourceTree = "<group>"; };
 		0194469D1D52492800C33AB0 /* Couchbase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Couchbase.swift; sourceTree = "<group>"; };
 		01D52DC81D5B2A5B00AFF070 /* PokemansTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemansTableViewController.swift; sourceTree = "<group>"; };
 		01D52DCB1D5B3EC100AFF070 /* CBLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBLExtensions.swift; sourceTree = "<group>"; };
+		01D7DA0F1D65F1D9000458F6 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		01D7DA101D65F1D9000458F6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		01F107921D523DA600844061 /* pokemans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokemans.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F107951D523DA600844061 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01F1079A1D523DA600844061 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,9 +71,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01804D9A1D6730E40048A927 /* RxDataSources.framework in Frameworks */,
 				01F107C11D523E6D00844061 /* libz.tbd in Frameworks */,
+				01D7DA141D65F1D9000458F6 /* RxSwift.framework in Frameworks */,
 				01F107BF1D523E6400844061 /* libsqlite3.tbd in Frameworks */,
 				01F107BD1D523E5B00844061 /* SystemConfiguration.framework in Frameworks */,
+				01D7DA131D65F1D9000458F6 /* RxCocoa.framework in Frameworks */,
 				01F107BB1D523E5300844061 /* Security.framework in Frameworks */,
 				01F107B91D523E4D00844061 /* CFNetwork.framework in Frameworks */,
 				01F107B61D523E3900844061 /* CouchbaseLite.framework in Frameworks */,
@@ -92,6 +104,7 @@
 		01F107891D523DA500844061 = {
 			isa = PBXGroup;
 			children = (
+				01804D9D1D673FEE0048A927 /* Pokemans.playground */,
 				01F107C21D523EB800844061 /* -Bridging-Header.h */,
 				01F107941D523DA600844061 /* pokemans */,
 				01F107A91D523DA600844061 /* pokemansTests */,
@@ -120,6 +133,7 @@
 				01F107A11D523DA600844061 /* Info.plist */,
 				01F107C71D52440B00844061 /* Model */,
 				0194469D1D52492800C33AB0 /* Couchbase.swift */,
+				01804D9B1D6736F20048A927 /* DataSource.swift */,
 				01D52DCB1D5B3EC100AFF070 /* CBLExtensions.swift */,
 			);
 			path = pokemans;
@@ -137,6 +151,9 @@
 		01F107B71D523E4D00844061 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01804D991D6730E40048A927 /* RxDataSources.framework */,
+				01D7DA0F1D65F1D9000458F6 /* RxCocoa.framework */,
+				01D7DA101D65F1D9000458F6 /* RxSwift.framework */,
 				01F107B51D523E3900844061 /* CouchbaseLite.framework */,
 				01F107C01D523E6D00844061 /* libz.tbd */,
 				01F107BE1D523E6400844061 /* libsqlite3.tbd */,
@@ -165,6 +182,7 @@
 				01F1078E1D523DA500844061 /* Sources */,
 				01F1078F1D523DA500844061 /* Frameworks */,
 				01F107901D523DA500844061 /* Resources */,
+				01D7DA161D6603FB000458F6 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -255,12 +273,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		01D7DA161D6603FB000458F6 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		01F1078E1D523DA500844061 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				01D52DC91D5B2A5B00AFF070 /* PokemansTableViewController.swift in Sources */,
+				01804D9C1D6736F20048A927 /* DataSource.swift in Sources */,
 				01F107C61D52413600844061 /* Pokeman.swift in Sources */,
 				01D52DCC1D5B3EC100AFF070 /* CBLExtensions.swift in Sources */,
 				0194469E1D52492800C33AB0 /* Couchbase.swift in Sources */,
@@ -405,6 +444,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = pokemans/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -424,6 +464,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = pokemans/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
