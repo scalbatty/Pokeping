@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 extension CBLQueryEnumerator {
     
@@ -18,4 +19,20 @@ extension CBLQueryEnumerator {
         }
         
     }
+    
+    func allDocuments() -> [CBLDocument] {
+        return self.flatMap({ element in
+            let row = element as! CBLQueryRow
+            return row.document
+        })
+    }
+}
+
+extension CBLLiveQuery {
+    
+    var rowObservable: Observable<CBLQueryEnumerator> {
+        return self.rx.observe(CBLQueryEnumerator.self, "rows").do(onSubscribe: { [weak self] in self?.start() }, onDispose: { [weak self] in self?.stop() })
+            .filter { $0 != nil }.map { $0! }
+    }
+    
 }

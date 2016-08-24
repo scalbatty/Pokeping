@@ -12,7 +12,6 @@ class Couchbase {
     
     private static let base_name = "pokemans"
     private static let pokeman_type = "pokeman"
-    private static let pokeping_type = "pokeping"
     private static let syncgateway_host = "http://localhost:4984/"
     private static let syncgateway_address = syncgateway_host + base_name
     private static let syncgateway_url = URL(string: syncgateway_address)!
@@ -26,7 +25,7 @@ class Couchbase {
         guard view.mapBlock == nil else { return view }
         
         view.setMapBlock({ (doc, emit) in
-            if let type = doc["type"] as? String, type == Couchbase.pokeping_type,
+            if let type = doc["type"] as? String, type == Poképing.type,
                 let date = doc["date"] {
                 emit(date, nil)
             }
@@ -45,7 +44,7 @@ class Couchbase {
             let database = try self.manager.databaseNamed(Couchbase.base_name)
             
             if let factory = database.modelFactory {
-                factory.registerClass(Pokeping.self, forDocumentType: Couchbase.pokeping_type)
+                factory.registerClass(Poképing.self, forDocumentType: Poképing.type)
             }
             
             self.database = database
@@ -72,9 +71,9 @@ class Couchbase {
 func addSomePokemans(in database:CBLDatabase) {
     
     do {
-        try createPokeman(username:"Jean-Poulain", pokeman:"Roucool", place:"République", in:database)
-        try createPokeman(username:"Mireille Trauma", pokeman:"Rattatat", place:"Rue Quincampoix", in:database)
-        try createPokeman(username:"Machicouli", pokeman:"Pikachu", place:"Catacombes de Paris", in:database)
+        try createPokeman(username:"Jean-Poulain", pokeman:16, place:"République", in:database)
+        try createPokeman(username:"Mireille Trauma", pokeman:19, place:"Rue Quincampoix", in:database)
+        try createPokeman(username:"Machicouli", pokeman:13, place:"Catacombes de Paris", in:database)
         try database.saveAllModels()
     }
     catch let error as NSError {
@@ -82,11 +81,11 @@ func addSomePokemans(in database:CBLDatabase) {
     }
 }
 
-func createPokeman(username:String, pokeman:String, place:String, in database:CBLDatabase) throws {
-    let ping = Pokeping(forNewDocumentIn: database)
+func createPokeman(username:String, pokeman:Int, place:String, in database:CBLDatabase) throws {
+    let ping = Poképing(forNewDocumentIn: database)
     
     ping.username = username
-    ping.pokemon = pokeman
+    ping.pokemonNumber = String(pokeman)
     ping.place = place
     ping.date = Date()
     

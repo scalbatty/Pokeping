@@ -9,41 +9,41 @@
 import Foundation
 import RxDataSources
 
-struct PokepingRow : IdentifiableType {
+struct PoképingRow : IdentifiableType {
     typealias Identity = String
     
-    var documentID:String
-    var identity: Identity { return documentID }
+    var identity: Identity { return poképing.document!.documentID }
+    var poképing: Poképing
     
 }
 
-extension PokepingRow: Equatable { }
+extension PoképingRow: Equatable { }
 
-func == (lhs: PokepingRow, rhs: PokepingRow) -> Bool {
-    return lhs.documentID == rhs.documentID
+func == (lhs: PoképingRow, rhs: PoképingRow) -> Bool {
+    return lhs.poképing == rhs.poképing
 }
 
-struct SectionOfPokepingRow {
+struct SectionOfPoképingRow {
     var items: [Item]
     var name: String
 }
 
-extension SectionOfPokepingRow: AnimatableSectionModelType {
-    typealias Item = PokepingRow
+extension SectionOfPoképingRow: AnimatableSectionModelType {
+    typealias Item = PoképingRow
     typealias Identity = String
     
     var identity: Identity { return name }
     
-    init(original: SectionOfPokepingRow, items: [Item]) {
+    init(original: SectionOfPoképingRow, items: [Item]) {
         self = original
         self.items = items
     }
 }
 
-extension SectionOfPokepingRow {
-    init(name:String, documentIDs: [String]) {
+extension SectionOfPoképingRow {
+    init(name: String, pings:[Poképing]) {
         self.name = name
-        self.items = documentIDs.map(PokepingRow.init(documentID:))
+        self.items = pings.map(PoképingRow.init(poképing:))
     }
 }
 
