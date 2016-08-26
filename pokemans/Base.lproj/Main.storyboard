@@ -43,18 +43,18 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DyO-Dp-pmc" id="5cR-VX-7ky">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="moM-SM-etl">
-                                                    <frame key="frameInset" minX="15" minY="5" width="33.5" height="20.5"/>
+                                                    <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eek-30-Hp1">
-                                                    <frame key="frameInset" minX="15" minY="25.5" width="44" height="14.5"/>
+                                                    <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -92,28 +92,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ecl-J2-dXH">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pokémanCell" textLabel="b0Q-LC-juy" style="IBUITableViewCellStyleDefault" id="smq-T1-Ft1">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="smq-T1-Ft1" id="EA0-Fa-axu">
-                                            <frame key="frameInset" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b0Q-LC-juy">
-                                                    <frame key="frameInset" minX="15" width="345" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PaY-6p-hxF">
                                 <items>
                                     <navigationItem title="Choose Pokéman" id="EON-se-K7D">
@@ -121,26 +99,58 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ypN-mJ-NyM">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VJt-ks-djA">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokémanCell" id="MLY-M5-Jfu" customClass="PokémanCell" customModule="pokemans" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hpk-lb-0IK"/>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="hpk-lb-0IK" secondAttribute="bottom" id="68h-J9-0sh"/>
+                                            <constraint firstItem="hpk-lb-0IK" firstAttribute="top" secondItem="MLY-M5-Jfu" secondAttribute="top" id="jNr-Wm-C2I"/>
+                                            <constraint firstAttribute="trailing" secondItem="hpk-lb-0IK" secondAttribute="trailing" id="kyH-PG-Ac2"/>
+                                            <constraint firstItem="hpk-lb-0IK" firstAttribute="leading" secondItem="MLY-M5-Jfu" secondAttribute="leading" id="xJ6-Qf-QKM"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="hpk-lb-0IK" id="Goa-HM-aQG"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ecl-J2-dXH" secondAttribute="trailing" id="7UZ-Rw-n2F"/>
-                            <constraint firstItem="ecl-J2-dXH" firstAttribute="top" secondItem="eqg-hd-kte" secondAttribute="bottom" id="ZB6-aP-gd4"/>
-                            <constraint firstItem="ecl-J2-dXH" firstAttribute="leading" secondItem="WXc-ey-2dj" secondAttribute="leading" id="eaI-7i-wuH"/>
+                            <constraint firstAttribute="trailing" secondItem="ypN-mJ-NyM" secondAttribute="trailing" id="EIj-ew-BuX"/>
+                            <constraint firstItem="ndJ-No-RVD" firstAttribute="top" secondItem="ypN-mJ-NyM" secondAttribute="bottom" id="ZJZ-ok-fdM"/>
                             <constraint firstAttribute="trailing" secondItem="PaY-6p-hxF" secondAttribute="trailing" id="h6b-EE-bmT"/>
+                            <constraint firstItem="ypN-mJ-NyM" firstAttribute="leading" secondItem="WXc-ey-2dj" secondAttribute="leading" id="jZf-4L-DWF"/>
+                            <constraint firstItem="ypN-mJ-NyM" firstAttribute="top" secondItem="PaY-6p-hxF" secondAttribute="bottom" id="rga-TA-MxY"/>
                             <constraint firstItem="PaY-6p-hxF" firstAttribute="top" secondItem="eqg-hd-kte" secondAttribute="bottom" id="wBi-nU-7rZ"/>
                             <constraint firstItem="PaY-6p-hxF" firstAttribute="leading" secondItem="WXc-ey-2dj" secondAttribute="leading" id="wfu-p5-oHa"/>
-                            <constraint firstItem="ndJ-No-RVD" firstAttribute="top" secondItem="ecl-J2-dXH" secondAttribute="bottom" id="zGM-Ly-05M"/>
                         </constraints>
                     </view>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="collectionView" destination="ypN-mJ-NyM" id="frQ-d5-9F6"/>
                         <outlet property="dummyButtonPickItem" destination="kFv-bD-EQD" id="QsN-xe-x8L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sdo-1Q-BTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1033" y="1064"/>
+            <point key="canvasLocation" x="1373.5999999999999" y="371.96401799100454"/>
         </scene>
     </scenes>
 </document>

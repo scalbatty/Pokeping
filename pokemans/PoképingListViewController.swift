@@ -30,7 +30,7 @@ struct PoképingViewModel {
     }
     
     static func createSectionObservable(fromQuery query:CBLQuery) -> Observable<[SectionOfPoképingRow]> {
-        return query.asLive().rowObservable
+        return query.asLive().rx.rows
             .throttle(0.1, scheduler:MainScheduler.instance)
             .map { $0.allDocuments().map(Poképing.init(for:)) }
             .map { [SectionOfPoképingRow(name:"Pokeping", pings:$0)] }
@@ -57,11 +57,15 @@ class PoképingListViewController: UIViewController {
         
         addPokémanButton.rx.tap
             .flatMapLatest {[weak self] _ in
-                return PokémanPickerController.create(parent: self)
-                    .flatMap { $0.pickedItem }.take(1)
+                return Reactive<PokémanPickerController>.create(parent: self)
+                    .flatMap { $0.rx.didSelectPokéman }.take(1)
             }
             .do(onNext: {[weak self] _ in self?.dismiss(animated: true, completion: nil) })
-            .subscribe(onNext: { item in print("Picked Pokéman I guess? \(item)") }).addDisposableTo(disposeBag)
+            .subscribe(onNext: { [weak self] pokéman in
+                guard let strongSelf = self else { return }
+                try! createPokeman(username: "Sacha", pokeman: pokéman.number, place: "Bibliothèque François Mitterrand", in: strongSelf.couchbase.database)
+            
+            }).addDisposableTo(disposeBag)
     }
     
     func configureDataSource() {
