@@ -10,17 +10,32 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxDataSources
-
-
+import Action
+import CoreLocation
 
 
 struct PoképingViewModel {
     
     let pokémansSections: Observable<[SectionOfPoképingRow]>
+    let createPoképing: (Pokéman, CLLocationCoordinate2D) -> Poképing
     
     init(couchbase: Couchbase) {
         let query = PoképingViewModel.createQuery(inBase: couchbase)
+        
         self.pokémansSections = PoképingViewModel.createSectionObservable(fromQuery: query)
+        
+        createPoképing = { (pokéman, location) in
+            let ping = Poképing(forNewDocumentIn: couchbase.database)
+            
+            ping.username = "Sacha"
+            ping.pokemonNumber = String(pokéman.number)
+            ping.place = "\(location)"
+            ping.date = Date()
+            
+            print ("Created poképing for id \(ping.pokemonNumber) at location \(location)")
+            
+            return ping
+        }
     }
     
     static func createQuery(inBase couchbase: Couchbase) -> CBLQuery {
@@ -34,7 +49,6 @@ struct PoképingViewModel {
             .throttle(0.1, scheduler:MainScheduler.instance)
             .map { $0.allDocuments().map(Poképing.init(for:)) }
             .map { [SectionOfPoképingRow(name:"Pokeping", pings:$0)] }
-
     }
 }
 
@@ -44,6 +58,7 @@ class PoképingListViewController: UIViewController {
     let dataSource = RxTableViewSectionedAnimatedDataSource<SectionOfPoképingRow>()
     let disposeBag = DisposeBag()
     let couchbase = Couchbase.sharedInstance
+    let geolocationService = GeolocationService.instance
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addPokémanButton: UIBarButtonItem!
@@ -55,17 +70,22 @@ class PoképingListViewController: UIViewController {
         viewModel.pokémansSections.bindTo(self.tableView.rx.items(dataSource:dataSource))
             .addDisposableTo(disposeBag)
         
-        addPokémanButton.rx.tap
+        let geoLoc = geolocationService.location.asObservable().observeOn(MainScheduler.instance)
+        
+        geoLoc.map { _ in return true }.take(1).bindTo(addPokémanButton.rx.enabled).addDisposableTo(disposeBag);
+        addPokémanButton.isEnabled = false;
+        
+        let pokémanSelection = addPokémanButton.rx.tap
             .flatMapLatest {[weak self] _ in
                 return Reactive<PokémanPickerController>.create(parent: self)
                     .flatMap { $0.rx.didSelectPokéman }.take(1)
             }
             .do(onNext: {[weak self] _ in self?.dismiss(animated: true, completion: nil) })
-            .subscribe(onNext: { [weak self] pokéman in
-                guard let strongSelf = self else { return }
-                try! createPokeman(username: "Sacha", pokeman: pokéman.number, place: "Bibliothèque François Mitterrand", in: strongSelf.couchbase.database)
-            
-            }).addDisposableTo(disposeBag)
+            .observeOn(MainScheduler.instance)
+        
+        pokémanSelection.withLatestFrom(geoLoc, resultSelector: self.viewModel.createPoképing)
+            .bindNext { poképing in try!poképing.save() }
+            .addDisposableTo(disposeBag)
     }
     
     func configureDataSource() {

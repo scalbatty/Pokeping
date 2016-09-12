@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01029D431D7C810A004D5348 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01029D421D7C810A004D5348 /* Action.framework */; };
+		01029D461D7C8658004D5348 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01029D451D7C8658004D5348 /* RxBlocking.framework */; };
+		01060E411D85A86B0072CECC /* GeolocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01060E401D85A86B0072CECC /* GeolocationService.swift */; };
+		01060E441D85A88F0072CECC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01060E431D85A88F0072CECC /* CoreLocation.framework */; };
 		0164151D1D6AF25500D055B7 /* Pokemans.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0164151F1D6AF25500D055B7 /* Pokemans.strings */; };
 		016415211D6AFA8800D055B7 /* PokémanPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016415201D6AFA8800D055B7 /* PokémanPickerController.swift */; };
 		01804D9A1D6730E40048A927 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01804D991D6730E40048A927 /* RxDataSources.framework */; };
@@ -44,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01029D421D7C810A004D5348 /* Action.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Action.framework; path = Carthage/Build/iOS/Action.framework; sourceTree = "<group>"; };
+		01029D451D7C8658004D5348 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		01060E401D85A86B0072CECC /* GeolocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeolocationService.swift; sourceTree = "<group>"; };
+		01060E431D85A88F0072CECC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0164151E1D6AF25500D055B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Pokemans.strings; sourceTree = "<group>"; };
 		016415201D6AFA8800D055B7 /* PokémanPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PokémanPickerController.swift"; sourceTree = "<group>"; };
 		01804D991D6730E40048A927 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
@@ -81,12 +89,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01060E441D85A88F0072CECC /* CoreLocation.framework in Frameworks */,
+				01029D431D7C810A004D5348 /* Action.framework in Frameworks */,
 				01804D9A1D6730E40048A927 /* RxDataSources.framework in Frameworks */,
 				01F107C11D523E6D00844061 /* libz.tbd in Frameworks */,
 				01D7DA141D65F1D9000458F6 /* RxSwift.framework in Frameworks */,
 				01F107BF1D523E6400844061 /* libsqlite3.tbd in Frameworks */,
 				01F107BD1D523E5B00844061 /* SystemConfiguration.framework in Frameworks */,
 				01D7DA131D65F1D9000458F6 /* RxCocoa.framework in Frameworks */,
+				01029D461D7C8658004D5348 /* RxBlocking.framework in Frameworks */,
 				01F107BB1D523E5300844061 /* Security.framework in Frameworks */,
 				01F107B91D523E4D00844061 /* CFNetwork.framework in Frameworks */,
 				01F107B61D523E3900844061 /* CouchbaseLite.framework in Frameworks */,
@@ -103,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01060E421D85A8710072CECC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				01060E401D85A86B0072CECC /* GeolocationService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		01846CCC1D67544800B706EF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +167,7 @@
 		01F107941D523DA600844061 /* pokemans */ = {
 			isa = PBXGroup;
 			children = (
+				01060E421D85A8710072CECC /* Services */,
 				01846CCC1D67544800B706EF /* Resources */,
 				01F107951D523DA600844061 /* AppDelegate.swift */,
 				01D52DCA1D5B2A7B00AFF070 /* UI */,
@@ -172,6 +192,9 @@
 		01F107B71D523E4D00844061 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01060E431D85A88F0072CECC /* CoreLocation.framework */,
+				01029D451D7C8658004D5348 /* RxBlocking.framework */,
+				01029D421D7C810A004D5348 /* Action.framework */,
 				01804D991D6730E40048A927 /* RxDataSources.framework */,
 				01D7DA0F1D65F1D9000458F6 /* RxCocoa.framework */,
 				01D7DA101D65F1D9000458F6 /* RxSwift.framework */,
@@ -308,6 +331,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Action.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -323,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01060E411D85A86B0072CECC /* GeolocationService.swift in Sources */,
 				01D52DC91D5B2A5B00AFF070 /* PoképingListViewController.swift in Sources */,
 				01FC93A81D70711900AA3BC4 /* Poképing.swift in Sources */,
 				01804D9C1D6736F20048A927 /* PoképingDataSource.swift in Sources */,

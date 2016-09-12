@@ -1,2 +1,3 @@
-github "ReactiveX/RxSwift" "278c6817532f8a1d3ee052a640fa43dfb84c5bdd"
-github "RxSwiftCommunity/RxDataSources" "979b92c15456d08b1cd39fb2e05c5720d6f7de94"
+github "ReactiveX/RxSwift" "3.0.0.alpha.1"
+git "file:///Users/pascalbatty/Developer/Libs/Action" "5220fd220941f0a10ffabef155b4f88167aae29e"
+github "RxSwiftCommunity/RxDataSources" "9fbf3aa934507b5e2cefd97fff0fa6b3785b7dd9"
