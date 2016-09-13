@@ -28,18 +28,19 @@ struct PoképingViewModel {
             let ping = Poképing(forNewDocumentIn: couchbase.database)
             
             ping.username = "Sacha"
-            ping.pokemonNumber = String(pokéman.number)
-            ping.place = "\(location)"
+            ping.pokeman = pokéman
             ping.date = Date()
+            ping.lat = CDouble(location.latitude)
+            ping.lon = CDouble(location.longitude)
             
-            print ("Created poképing for id \(ping.pokemonNumber) at location \(location)")
+            print ("Created poképing for id \(ping.pokeman.number) at location \(location)")
             
             return ping
         }
     }
     
     static func createQuery(inBase couchbase: Couchbase) -> CBLQuery {
-        let query = couchbase.pokemanView.createQuery()
+        let query = couchbase.pokepingView.createQuery()
         query.descending = true
         return query
     }
@@ -65,6 +66,14 @@ class PoképingListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let passedFirstLaunch = UserDefaults.standard.bool(forKey: "FirstLaunch")
+        if (!passedFirstLaunch) {
+            let cbl = Couchbase.sharedInstance
+            addSomePokemans(in: cbl.database)
+            UserDefaults.standard.set(true, forKey: "FirstLaunch")
+        }
+
         
         configureDataSource()
         viewModel.pokémansSections.bindTo(self.tableView.rx.items(dataSource:dataSource))
@@ -93,8 +102,8 @@ class PoképingListViewController: UIViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "pokemanCell", for: indexPath)
             
             let ping = row.poképing
-            cell.textLabel?.text = ping.pokéman?.localizedName
-            cell.imageView?.image = ping.pokéman?.picture
+            cell.textLabel?.text = ping.pokeman.name
+            cell.imageView?.image = ping.pokeman.picture
             cell.detailTextLabel?.text = ping.date.description
             
             return cell

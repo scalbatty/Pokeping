@@ -19,7 +19,7 @@ class Couchbase {
     private let manager: CBLManager
     let database: CBLDatabase
     
-    var pokemanView: CBLView {
+    var pokepingView: CBLView {
         let view = database.viewNamed("allPokepings")
         
         guard view.mapBlock == nil else { return view }
@@ -30,6 +30,21 @@ class Couchbase {
                 emit(date, nil)
             }
         }, version: "8")
+        
+        return view
+    }
+    
+    var pokémanView: CBLView {
+        let view = database.viewNamed("allPokemans")
+        
+        guard view.mapBlock == nil else { return view }
+        
+        view.setMapBlock({ (doc, emit) in
+            if let type = doc["type"] as? String, type == Pokéman.type,
+                let number = doc["number"], let name = doc["name"] as? String {
+                emit(CBLTextKey(name), number)
+            }
+            }, version: "4")
         
         return view
     }
@@ -45,6 +60,7 @@ class Couchbase {
             
             if let factory = database.modelFactory {
                 factory.registerClass(Poképing.self, forDocumentType: Poképing.type)
+                factory.registerClass(Pokéman.self, forDocumentType: Pokéman.type)
             }
             
             self.database = database
@@ -70,10 +86,33 @@ class Couchbase {
 
 func addSomePokemans(in database:CBLDatabase) {
     
+    let map = [("1" , "Bulbizarre"),
+               ("2" , "Herbizarre"),
+               ("3" , "Florizarre"),
+               ("4" , "Salamèche"),
+               ("5" , "Reptincel"),
+               ("6" , "Dracaufeu"),
+               ("7" , "Carapuce"),
+               ("8" , "Carabaffe"),
+               ("9" , "Tortank"),
+               ("10" , "Chenipan"),
+               ("11" , "Chrysacier"),
+               ("12" , "Papilusion"),
+               ("13" , "Aspicot"),
+               ("14" , "Coconfort"),
+               ("15" , "Dardagnan"),
+               ("16" , "Roucool"),
+               ("17" , "Roucoups"),
+               ("18" , "Roucarnage"),
+               ("19" , "Rattata"),
+               ("20" , "Rattatac"),
+               ("21" , "Piafabec"),
+               ("22" , "Rapasdepic")]
+    
     do {
-        try createPokeman(username:"Jean-Poulain", pokeman:16, place:"République", in:database)
-        try createPokeman(username:"Mireille Trauma", pokeman:19, place:"Rue Quincampoix", in:database)
-        try createPokeman(username:"Machicouli", pokeman:13, place:"Catacombes de Paris", in:database)
+        for (number, name) in map {
+            try createPokeman(number: number, name: name, in: database)
+        }
         try database.saveAllModels()
     }
     catch let error as NSError {
@@ -81,15 +120,10 @@ func addSomePokemans(in database:CBLDatabase) {
     }
 }
 
-func createPokeman(username:String, pokeman:Int, place:String, in database:CBLDatabase) throws {
-    let ping = Poképing(forNewDocumentIn: database)
+func createPokeman(number:String, name:String, in database:CBLDatabase) throws {
+    let pokéman = Pokéman(forNewDocumentIn: database)
+    pokéman.number = number
+    pokéman.name = name
     
-    ping.username = username
-    ping.pokemonNumber = String(pokeman)
-    ping.place = place
-    ping.date = Date()
-    
-    try ping.save()
-    print("Saved this Pokeman! \(ping.document?.documentID) \(ping.document?.properties)")
+    try pokéman.save()
 }
-

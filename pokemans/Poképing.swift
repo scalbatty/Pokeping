@@ -12,17 +12,10 @@ import Foundation
 class Poképing : CBLModel {
     static let type:String = "pokeping"
     
-    @NSManaged var username: String!
-    @NSManaged var pokemonNumber: String!
-    @NSManaged var place: String!
-    @NSManaged var date: Date!
-}
+    @NSManaged var username: String
+    @NSManaged var date: Date
+    @NSManaged var pokeman: Pokéman
+    @NSManaged var lat: CDouble
+    @NSManaged var lon: CDouble
 
-extension Poképing {
-    var pokéman: Pokéman? {
-        guard let number = Int(pokemonNumber) else {
-            return nil
-        }
-        return Pokéman(number: number)
-    }
 }

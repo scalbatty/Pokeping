@@ -95,11 +95,12 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PaY-6p-hxF">
                                 <items>
                                     <navigationItem title="Choose Pokéman" id="EON-se-K7D">
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="kFv-bD-EQD"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="kFv-bD-EQD"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ypN-mJ-NyM">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ypN-mJ-NyM">
+                                <frame key="frameInset" minY="111" width="375" height="556"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VJt-ks-djA">
                                     <size key="itemSize" width="50" height="50"/>
@@ -131,14 +132,21 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jqn-Y5-OlP">
+                                <frame key="frameInset" minY="67" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ypN-mJ-NyM" firstAttribute="top" secondItem="jqn-Y5-OlP" secondAttribute="bottom" id="6Ru-iX-xfh"/>
                             <constraint firstAttribute="trailing" secondItem="ypN-mJ-NyM" secondAttribute="trailing" id="EIj-ew-BuX"/>
+                            <constraint firstItem="jqn-Y5-OlP" firstAttribute="leading" secondItem="WXc-ey-2dj" secondAttribute="leading" id="EYa-RI-iRM"/>
                             <constraint firstItem="ndJ-No-RVD" firstAttribute="top" secondItem="ypN-mJ-NyM" secondAttribute="bottom" id="ZJZ-ok-fdM"/>
                             <constraint firstAttribute="trailing" secondItem="PaY-6p-hxF" secondAttribute="trailing" id="h6b-EE-bmT"/>
                             <constraint firstItem="ypN-mJ-NyM" firstAttribute="leading" secondItem="WXc-ey-2dj" secondAttribute="leading" id="jZf-4L-DWF"/>
-                            <constraint firstItem="ypN-mJ-NyM" firstAttribute="top" secondItem="PaY-6p-hxF" secondAttribute="bottom" id="rga-TA-MxY"/>
+                            <constraint firstAttribute="trailing" secondItem="jqn-Y5-OlP" secondAttribute="trailing" id="oi1-1m-oYR"/>
+                            <constraint firstItem="jqn-Y5-OlP" firstAttribute="top" secondItem="eqg-hd-kte" secondAttribute="bottom" id="reE-qD-eBi"/>
                             <constraint firstItem="PaY-6p-hxF" firstAttribute="top" secondItem="eqg-hd-kte" secondAttribute="bottom" id="wBi-nU-7rZ"/>
                             <constraint firstItem="PaY-6p-hxF" firstAttribute="leading" secondItem="WXc-ey-2dj" secondAttribute="leading" id="wfu-p5-oHa"/>
                         </constraints>
@@ -146,6 +154,7 @@
                     <connections>
                         <outlet property="collectionView" destination="ypN-mJ-NyM" id="frQ-d5-9F6"/>
                         <outlet property="dummyButtonPickItem" destination="kFv-bD-EQD" id="QsN-xe-x8L"/>
+                        <outlet property="searchBar" destination="jqn-Y5-OlP" id="4rI-wR-04d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sdo-1Q-BTp" userLabel="First Responder" sceneMemberID="firstResponder"/>

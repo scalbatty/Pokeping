@@ -21,26 +21,70 @@ class PokémanCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
 }
 
+struct PokémanError:Error {}
+
+struct PokémanViewModel {
+    
+    private let view:CBLView
+    public var searchText:Observable<String>?
+    
+    init(couchbase: Couchbase) {
+        self.view = Couchbase.sharedInstance.pokémanView
+    }
+    
+    func searchResults() -> Observable<[Pokéman]> {
+        
+        guard let searchText = searchText else {
+            return Observable.never()
+        }
+        
+        return searchText.map { (text) -> [Pokéman] in
+            guard text.characters.count > 0 else {
+                return []
+            }
+            let query = self.view.createQuery()
+            query.descending = false
+            query.fullTextQuery = text + "*"
+            
+            guard let result = try? query.run() else {
+                return []
+            }
+
+            return result.allDocuments().map(Pokéman.init)
+        }
+    }
+    
+}
+
 @objc class PokémanPickerController: UIViewController {
     
     weak var delegate:PokémanPickerDelegate?
-    let dataSource = Observable<[Pokéman]>.just(Pokéman.all)
+    let dataSource = Observable<[Pokéman]>.just([])
     let disposeBag = DisposeBag()
+    var viewModel = PokémanViewModel(couchbase: Couchbase.sharedInstance)
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var dummyButtonPickItem: UIBarButtonItem!
+    @IBOutlet weak var closeButton: UIBarButtonItem!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataSource.bindTo(collectionView.rx.items(cellIdentifier:"PokémanCell")) { index, model, cell in
+        viewModel.searchText = searchBar.rx.text
+                        .throttle(0.3, scheduler: MainScheduler.instance)
+                        .distinctUntilChanged()
+                        .do(onNext: { print("Text entered: \($0)") })
+        
+        viewModel.searchResults()
+            .do(onNext: { print("Search results: \($0)") })
+            .bindTo(collectionView.rx.items(cellIdentifier:"PokémanCell")) { index, model, cell in
             
             guard let cell = cell as? PokémanCell else { return }
             
             cell.imageView.image = model.picture
             
         }.addDisposableTo(disposeBag)
-        
+
         collectionView.rx.modelSelected(Pokéman.self)
             .do(onNext: { [weak self] _ in self?.dismiss(animated: true, completion: nil) })
             .subscribe(onNext: { [weak self] pokéman in
@@ -50,11 +94,15 @@ class PokémanCell: UICollectionViewCell {
             
             }).addDisposableTo(disposeBag)
         
-        dummyButtonPickItem.rx.tap
+        closeButton.rx.tap
             .do(onNext: { [weak self] _ in self?.dismiss(animated: true, completion: nil) })
             .subscribe(onNext: { [weak self] in
             self?.dismiss(animated: true, completion: nil)
         }).addDisposableTo(disposeBag)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        searchBar.becomeFirstResponder()
     }
 }
 
