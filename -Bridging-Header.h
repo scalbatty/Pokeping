@@ -1,6 +1,6 @@
 //
 //  -Bridging-Header.h
-//  pokemans
+//  pokemons
 //
 //  Created by Pascal Batty on 03/08/2016.
 //  Copyright © 2016 scalbatty. All rights reserved.

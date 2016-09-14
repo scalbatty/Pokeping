@@ -1,6 +1,6 @@
 //
-//  Pokeman.swift
-//  pokemans
+//  Pokemon.swift
+//  pokemons
 //
 //  Created by Pascal Batty on 03/08/2016.
 //  Copyright © 2016 scalbatty. All rights reserved.
@@ -9,10 +9,10 @@
 import Foundation
 
 
-let pokeman_number_range = 1...22
+let pokemon_number_range = 1...22
 
-@objc(Pokeman)
-class Pokéman: CBLModel {
+@objc(Pokemon)
+class Pokémon: CBLModel {
     
     static let type:String = "pokemon"
     

@@ -1,6 +1,6 @@
 //
 //  PoképingCreationViewController.swift
-//  pokemans
+//  pokemons
 //
 //  Created by Pascal Batty on 22/08/2016.
 //  Copyright © 2016 scalbatty. All rights reserved.
@@ -11,34 +11,34 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-@objc protocol PokémanPickerDelegate: AnyObject {
-    @objc optional func pokémanPicker(_ :PokémanPickerController, didSelectPokéman: Pokéman)
+@objc protocol PokémonPickerDelegate: AnyObject {
+    @objc optional func pokémonPicker(_ :PokémonPickerController, didSelectPokémon: Pokémon)
 }
 
 
-class PokémanCell: UICollectionViewCell {
+class PokémonCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
 }
 
-struct PokémanError:Error {}
+struct PokémonError:Error {}
 
-struct PokémanViewModel {
+struct PokémonViewModel {
     
     private let view:CBLView
     public var searchText:Observable<String>?
     
     init(couchbase: Couchbase) {
-        self.view = Couchbase.sharedInstance.pokémanView
+        self.view = Couchbase.sharedInstance.pokémonView
     }
     
-    func searchResults() -> Observable<[Pokéman]> {
+    func searchResults() -> Observable<[Pokémon]> {
         
         guard let searchText = searchText else {
             return Observable.never()
         }
         
-        return searchText.map { (text) -> [Pokéman] in
+        return searchText.map { (text) -> [Pokémon] in
             guard text.characters.count > 0 else {
                 return []
             }
@@ -50,18 +50,18 @@ struct PokémanViewModel {
                 return []
             }
 
-            return result.allDocuments().map(Pokéman.init)
+            return result.allDocuments().map(Pokémon.init)
         }
     }
     
 }
 
-@objc class PokémanPickerController: UIViewController {
+@objc class PokémonPickerController: UIViewController {
     
-    weak var delegate:PokémanPickerDelegate?
-    let dataSource = Observable<[Pokéman]>.just([])
+    weak var delegate:PokémonPickerDelegate?
+    let dataSource = Observable<[Pokémon]>.just([])
     let disposeBag = DisposeBag()
-    var viewModel = PokémanViewModel(couchbase: Couchbase.sharedInstance)
+    var viewModel = PokémonViewModel(couchbase: Couchbase.sharedInstance)
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var closeButton: UIBarButtonItem!
@@ -77,20 +77,20 @@ struct PokémanViewModel {
         
         viewModel.searchResults()
             .do(onNext: { print("Search results: \($0)") })
-            .bindTo(collectionView.rx.items(cellIdentifier:"PokémanCell")) { index, model, cell in
+            .bindTo(collectionView.rx.items(cellIdentifier:"PokémonCell")) { index, model, cell in
             
-            guard let cell = cell as? PokémanCell else { return }
+            guard let cell = cell as? PokémonCell else { return }
             
             cell.imageView.image = model.picture
             
         }.addDisposableTo(disposeBag)
 
-        collectionView.rx.modelSelected(Pokéman.self)
+        collectionView.rx.modelSelected(Pokémon.self)
             .do(onNext: { [weak self] _ in self?.dismiss(animated: true, completion: nil) })
-            .subscribe(onNext: { [weak self] pokéman in
+            .subscribe(onNext: { [weak self] pokémon in
             guard let strongSelf = self, let delegate = strongSelf.delegate else { return }
             
-            delegate.pokémanPicker?(strongSelf, didSelectPokéman: pokéman)
+            delegate.pokémonPicker?(strongSelf, didSelectPokémon: pokémon)
             
             }).addDisposableTo(disposeBag)
         
@@ -107,15 +107,15 @@ struct PokémanViewModel {
 }
 
 
-extension Reactive where Base:PokémanPickerController {
+extension Reactive where Base:PokémonPickerController {
     
     var delegate: DelegateProxy {
-        return RxPokémanPickerDelegateProxy.proxyForObject(base)
+        return RxPokémonPickerDelegateProxy.proxyForObject(base)
     }
     
-    static func create(parent: UIViewController?) -> Observable<PokémanPickerController> {
+    static func create(parent: UIViewController?) -> Observable<PokémonPickerController> {
         return Observable.create { [weak parent] observer in
-            let picker = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pokémanPicker") as! PokémanPickerController
+            let picker = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pokémonPicker") as! PokémonPickerController
             
             guard let parent = parent else {
                 observer.on(.completed)
@@ -129,23 +129,23 @@ extension Reactive where Base:PokémanPickerController {
         }
     }
     
-    var didSelectPokéman: Observable<Pokéman> {
-        return delegate.observe(#selector(PokémanPickerDelegate.pokémanPicker(_:didSelectPokéman:)))
+    var didSelectPokémon: Observable<Pokémon> {
+        return delegate.observe(#selector(PokémonPickerDelegate.pokémonPicker(_:didSelectPokémon:)))
             .map { a in
-                return a[1] as! Pokéman
+                return a[1] as! Pokémon
             }
     }
 }
 
-class RxPokémanPickerDelegateProxy: DelegateProxy, DelegateProxyType, PokémanPickerDelegate {
+class RxPokémonPickerDelegateProxy: DelegateProxy, DelegateProxyType, PokémonPickerDelegate {
     class func currentDelegateFor(_ object: AnyObject) -> AnyObject? {
-        let pokémanPicker: PokémanPickerController = object as! PokémanPickerController
-        return pokémanPicker.delegate
+        let pokémonPicker: PokémonPickerController = object as! PokémonPickerController
+        return pokémonPicker.delegate
     }
     
     class func setCurrentDelegate(_ delegate: AnyObject?, toObject object: AnyObject) {
-        let pokémanPicker: PokémanPickerController = object as! PokémanPickerController
-        pokémanPicker.delegate = delegate as! PokémanPickerDelegate?
+        let pokémonPicker: PokémonPickerController = object as! PokémonPickerController
+        pokémonPicker.delegate = delegate as! PokémonPickerDelegate?
     }
 
 }

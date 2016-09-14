@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="-150" y="372"/>
         </scene>
-        <!--Pokemans-->
+        <!--Poképing-->
         <scene sceneID="dCt-op-zac">
             <objects>
                 <viewController id="sI2-AR-miT" customClass="PoképingListViewController" customModule="pokemans" customModuleProvider="target" sceneMemberID="viewController">
@@ -39,22 +39,22 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pokemanCell" textLabel="moM-SM-etl" detailTextLabel="eek-30-Hp1" style="IBUITableViewCellStyleSubtitle" id="DyO-Dp-pmc">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PoképingCell" textLabel="moM-SM-etl" detailTextLabel="eek-30-Hp1" style="IBUITableViewCellStyleSubtitle" id="DyO-Dp-pmc">
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DyO-Dp-pmc" id="5cR-VX-7ky">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="moM-SM-etl">
-                                                    <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
+                                                    <frame key="frameInset" minX="15" minY="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eek-30-Hp1">
-                                                    <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
+                                                    <frame key="frameInset" minX="15" minY="25.5" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -68,11 +68,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Pokemans" id="EKJ-Za-B0Y">
+                    <navigationItem key="navigationItem" title="Poképing" id="EKJ-Za-B0Y">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sg2-BA-DZB"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="addPokémanButton" destination="Sg2-BA-DZB" id="ceA-QC-lBn"/>
+                        <outlet property="addPokémonButton" destination="Sg2-BA-DZB" id="2vy-iu-JXB"/>
                         <outlet property="tableView" destination="q1H-Z1-TAz" id="7US-QJ-yUr"/>
                     </connections>
                 </viewController>
@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="605.60000000000002" y="371.96401799100454"/>
         </scene>
-        <!--Pokéman Picker Controller-->
+        <!--Pokémon Picker Controller-->
         <scene sceneID="iKM-XT-euj">
             <objects>
-                <viewController storyboardIdentifier="pokémanPicker" id="JfG-vK-mhU" customClass="PokémanPickerController" customModule="pokemans" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pokémonPicker" id="JfG-vK-mhU" customClass="PokémonPickerController" customModule="pokemans" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eqg-hd-kte"/>
                         <viewControllerLayoutGuide type="bottom" id="ndJ-No-RVD"/>
@@ -94,26 +94,25 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PaY-6p-hxF">
                                 <items>
-                                    <navigationItem title="Choose Pokéman" id="EON-se-K7D">
+                                    <navigationItem title="Choose Pokémon" id="EON-se-K7D">
                                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="kFv-bD-EQD"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ypN-mJ-NyM">
-                                <frame key="frameInset" minY="111" width="375" height="556"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ypN-mJ-NyM">
+                                <color key="backgroundColor" red="0.87566184997558594" green="0.87563550472259521" blue="0.87565046548843384" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VJt-ks-djA">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="80" height="80"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokémanCell" id="MLY-M5-Jfu" customClass="PokémanCell" customModule="pokemans" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokémonCell" id="MLY-M5-Jfu" customClass="PokémonCell" customModule="pokemans" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hpk-lb-0IK"/>
@@ -132,8 +131,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jqn-Y5-OlP">
-                                <frame key="frameInset" minY="67" height="44"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="jqn-Y5-OlP">
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -152,8 +150,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="kFv-bD-EQD" id="0vr-Pt-bSG"/>
                         <outlet property="collectionView" destination="ypN-mJ-NyM" id="frQ-d5-9F6"/>
-                        <outlet property="dummyButtonPickItem" destination="kFv-bD-EQD" id="QsN-xe-x8L"/>
                         <outlet property="searchBar" destination="jqn-Y5-OlP" id="4rI-wR-04d"/>
                     </connections>
                 </viewController>

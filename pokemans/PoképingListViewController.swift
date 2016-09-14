@@ -1,6 +1,6 @@
 //
-//  PokemansTableViewController.swift
-//  pokemans
+//  PokemonsTableViewController.swift
+//  pokemons
 //
 //  Created by Pascal Batty on 10/08/2016.
 //  Copyright © 2016 scalbatty. All rights reserved.
@@ -16,24 +16,24 @@ import CoreLocation
 
 struct PoképingViewModel {
     
-    let pokémansSections: Observable<[SectionOfPoképingRow]>
-    let createPoképing: (Pokéman, CLLocationCoordinate2D) -> Poképing
+    let pokémonsSections: Observable<[SectionOfPoképingRow]>
+    let createPoképing: (Pokémon, CLLocationCoordinate2D) -> Poképing
     
     init(couchbase: Couchbase) {
         let query = PoképingViewModel.createQuery(inBase: couchbase)
         
-        self.pokémansSections = PoképingViewModel.createSectionObservable(fromQuery: query)
+        self.pokémonsSections = PoképingViewModel.createSectionObservable(fromQuery: query)
         
-        createPoképing = { (pokéman, location) in
+        createPoképing = { (pokémon, location) in
             let ping = Poképing(forNewDocumentIn: couchbase.database)
             
             ping.username = "Sacha"
-            ping.pokeman = pokéman
+            ping.pokemon = pokémon
             ping.date = Date()
             ping.lat = CDouble(location.latitude)
             ping.lon = CDouble(location.longitude)
             
-            print ("Created poképing for id \(ping.pokeman.number) at location \(location)")
+            print ("Created poképing for id \(ping.pokemon.number) at location \(location)")
             
             return ping
         }
@@ -47,7 +47,7 @@ struct PoképingViewModel {
     
     static func createSectionObservable(fromQuery query:CBLQuery) -> Observable<[SectionOfPoképingRow]> {
         return query.asLive().rx.rows
-            .throttle(0.1, scheduler:MainScheduler.instance)
+            .throttle(0.5, scheduler:MainScheduler.instance)
             .map { $0.allDocuments().map(Poképing.init(for:)) }
             .map { [SectionOfPoképingRow(name:"Pokeping", pings:$0)] }
     }
@@ -62,7 +62,7 @@ class PoképingListViewController: UIViewController {
     let geolocationService = GeolocationService.instance
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addPokémanButton: UIBarButtonItem!
+    @IBOutlet weak var addPokémonButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,40 +70,40 @@ class PoképingListViewController: UIViewController {
         let passedFirstLaunch = UserDefaults.standard.bool(forKey: "FirstLaunch")
         if (!passedFirstLaunch) {
             let cbl = Couchbase.sharedInstance
-            addSomePokemans(in: cbl.database)
+            addSomePokemons(in: cbl.database)
             UserDefaults.standard.set(true, forKey: "FirstLaunch")
         }
 
         
         configureDataSource()
-        viewModel.pokémansSections.bindTo(self.tableView.rx.items(dataSource:dataSource))
+        viewModel.pokémonsSections.bindTo(self.tableView.rx.items(dataSource:dataSource))
             .addDisposableTo(disposeBag)
         
         let geoLoc = geolocationService.location.asObservable().observeOn(MainScheduler.instance)
         
-        geoLoc.map { _ in return true }.take(1).bindTo(addPokémanButton.rx.enabled).addDisposableTo(disposeBag);
-        addPokémanButton.isEnabled = false;
+        geoLoc.map { _ in return true }.take(1).bindTo(addPokémonButton.rx.enabled).addDisposableTo(disposeBag);
+        addPokémonButton.isEnabled = false;
         
-        let pokémanSelection = addPokémanButton.rx.tap
+        let pokémonSelection = addPokémonButton.rx.tap
             .flatMapLatest {[weak self] _ in
-                return Reactive<PokémanPickerController>.create(parent: self)
-                    .flatMap { $0.rx.didSelectPokéman }.take(1)
+                return Reactive<PokémonPickerController>.create(parent: self)
+                    .flatMap { $0.rx.didSelectPokémon }.take(1)
             }
             .do(onNext: {[weak self] _ in self?.dismiss(animated: true, completion: nil) })
             .observeOn(MainScheduler.instance)
         
-        pokémanSelection.withLatestFrom(geoLoc, resultSelector: self.viewModel.createPoképing)
+        pokémonSelection.withLatestFrom(geoLoc, resultSelector: self.viewModel.createPoképing)
             .bindNext { poképing in try!poképing.save() }
             .addDisposableTo(disposeBag)
     }
     
     func configureDataSource() {
         dataSource.configureCell = { dataSource, tableView, indexPath, row in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "pokemanCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PoképingCell", for: indexPath)
             
             let ping = row.poképing
-            cell.textLabel?.text = ping.pokeman.name
-            cell.imageView?.image = ping.pokeman.picture
+            cell.textLabel?.text = ping.pokemon.name
+            cell.imageView?.image = ping.pokemon.picture
             cell.detailTextLabel?.text = ping.date.description
             
             return cell

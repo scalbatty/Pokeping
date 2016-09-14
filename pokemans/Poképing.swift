@@ -1,6 +1,6 @@
 //
 //  Poképing.swift
-//  pokemans
+//  pokemons
 //
 //  Created by Pascal Batty on 26/08/2016.
 //  Copyright © 2016 scalbatty. All rights reserved.
@@ -14,7 +14,7 @@ class Poképing : CBLModel {
     
     @NSManaged var username: String
     @NSManaged var date: Date
-    @NSManaged var pokeman: Pokéman
+    @NSManaged var pokemon: Pokémon
     @NSManaged var lat: CDouble
     @NSManaged var lon: CDouble
 

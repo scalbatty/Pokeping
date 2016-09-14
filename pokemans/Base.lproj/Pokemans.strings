@@ -1,30 +1,30 @@
 /* 
-  Pokeman_names.strings
-  pokemans
+  Pokemon_names.strings
+  pokemons
 
   Created by Pascal Batty on 22/08/2016.
   Copyright © 2016 scalbatty. All rights reserved.
 */
 
-"Pokeman_1" = "Bulbizarre";
-"Pokeman_2" = "Herbizarre";
-"Pokeman_3" = "Florizarre";
-"Pokeman_4" = "Salamèche";
-"Pokeman_5" = "Reptincel";
-"Pokeman_6" = "Dracaufeu";
-"Pokeman_7" = "Carapuce";
-"Pokeman_8" = "Carabaffe";
-"Pokeman_9" = "Tortank";
-"Pokeman_10" = "Chenipan";
-"Pokeman_11" = "Chrysacier";
-"Pokeman_12" = "Papilusion";
-"Pokeman_13" = "Aspicot";
-"Pokeman_14" = "Coconfort";
-"Pokeman_15" = "Dardagnan";
-"Pokeman_16" = "Roucool";
-"Pokeman_17" = "Roucoups";
-"Pokeman_18" = "Roucarnage";
-"Pokeman_19" = "Rattata";
-"Pokeman_20" = "Rattatac";
-"Pokeman_21" = "Piafabec";
-"Pokeman_22" = "Rapasdepic";
+"Pokemon_1" = "Bulbizarre";
+"Pokemon_2" = "Herbizarre";
+"Pokemon_3" = "Florizarre";
+"Pokemon_4" = "Salamèche";
+"Pokemon_5" = "Reptincel";
+"Pokemon_6" = "Dracaufeu";
+"Pokemon_7" = "Carapuce";
+"Pokemon_8" = "Carabaffe";
+"Pokemon_9" = "Tortank";
+"Pokemon_10" = "Chenipan";
+"Pokemon_11" = "Chrysacier";
+"Pokemon_12" = "Papilusion";
+"Pokemon_13" = "Aspicot";
+"Pokemon_14" = "Coconfort";
+"Pokemon_15" = "Dardagnan";
+"Pokemon_16" = "Roucool";
+"Pokemon_17" = "Roucoups";
+"Pokemon_18" = "Roucarnage";
+"Pokemon_19" = "Rattata";
+"Pokemon_20" = "Rattatac";
+"Pokemon_21" = "Piafabec";
+"Pokemon_22" = "Rapasdepic";

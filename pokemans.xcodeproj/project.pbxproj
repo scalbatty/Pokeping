@@ -12,7 +12,7 @@
 		01060E411D85A86B0072CECC /* GeolocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01060E401D85A86B0072CECC /* GeolocationService.swift */; };
 		01060E441D85A88F0072CECC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01060E431D85A88F0072CECC /* CoreLocation.framework */; };
 		0164151D1D6AF25500D055B7 /* Pokemans.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0164151F1D6AF25500D055B7 /* Pokemans.strings */; };
-		016415211D6AFA8800D055B7 /* PokémanPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016415201D6AFA8800D055B7 /* PokémanPickerController.swift */; };
+		016415211D6AFA8800D055B7 /* PokémonPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016415201D6AFA8800D055B7 /* PokémonPickerController.swift */; };
 		01804D9A1D6730E40048A927 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01804D991D6730E40048A927 /* RxDataSources.framework */; };
 		01804D9C1D6736F20048A927 /* PoképingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01804D9B1D6736F20048A927 /* PoképingDataSource.swift */; };
 		01846CCB1D67543E00B706EF /* Pokemans.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01846CCA1D67543E00B706EF /* Pokemans.xcassets */; };
@@ -53,7 +53,7 @@
 		01060E401D85A86B0072CECC /* GeolocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeolocationService.swift; sourceTree = "<group>"; };
 		01060E431D85A88F0072CECC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0164151E1D6AF25500D055B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Pokemans.strings; sourceTree = "<group>"; };
-		016415201D6AFA8800D055B7 /* PokémanPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PokémanPickerController.swift"; sourceTree = "<group>"; };
+		016415201D6AFA8800D055B7 /* PokémonPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PokémonPickerController.swift"; sourceTree = "<group>"; };
 		01804D991D6730E40048A927 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		01804D9B1D6736F20048A927 /* PoképingDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PoképingDataSource.swift"; sourceTree = "<group>"; };
 		01804D9D1D673FEE0048A927 /* Pokemans.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Pokemans.playground; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 			children = (
 				01F107991D523DA600844061 /* Main.storyboard */,
 				01D52DC81D5B2A5B00AFF070 /* PoképingListViewController.swift */,
-				016415201D6AFA8800D055B7 /* PokémanPickerController.swift */,
+				016415201D6AFA8800D055B7 /* PokémonPickerController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 				01D52DC91D5B2A5B00AFF070 /* PoképingListViewController.swift in Sources */,
 				01FC93A81D70711900AA3BC4 /* Poképing.swift in Sources */,
 				01804D9C1D6736F20048A927 /* PoképingDataSource.swift in Sources */,
-				016415211D6AFA8800D055B7 /* PokémanPickerController.swift in Sources */,
+				016415211D6AFA8800D055B7 /* PokémonPickerController.swift in Sources */,
 				01F107C61D52413600844061 /* Pokeman.swift in Sources */,
 				01D52DCC1D5B3EC100AFF070 /* RxCouchbase.swift in Sources */,
 				0194469E1D52492800C33AB0 /* Couchbase.swift in Sources */,
@@ -511,7 +511,7 @@
 				INFOPLIST_FILE = pokemans/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.scalbatty.pokemans;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scalbatty.pokeping;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -531,7 +531,7 @@
 				INFOPLIST_FILE = pokemans/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.scalbatty.pokemans;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scalbatty.pokeping;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

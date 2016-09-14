@@ -1,6 +1,6 @@
 //
 //  GeolocationService.swift
-//  pokemans
+//  pokemons
 //
 //  Created by Pascal Batty on 11/09/2016.
 //  Copyright © 2016 scalbatty. All rights reserved.

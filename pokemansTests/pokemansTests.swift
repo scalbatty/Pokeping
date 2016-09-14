@@ -1,15 +1,15 @@
 //
-//  pokemansTests.swift
-//  pokemansTests
+//  pokemonsTests.swift
+//  pokemonsTests
 //
 //  Created by Pascal Batty on 03/08/2016.
 //  Copyright © 2016 scalbatty. All rights reserved.
 //
 
 import XCTest
-@testable import pokemans
+@testable import pokemons
 
-class pokemansTests: XCTestCase {
+class pokemonsTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
