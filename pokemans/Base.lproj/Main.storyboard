@@ -25,7 +25,7 @@
         <!--Poképing-->
         <scene sceneID="dCt-op-zac">
             <objects>
-                <viewController id="sI2-AR-miT" customClass="PoképingListViewController" customModule="pokemans" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sI2-AR-miT" customClass="PoképingListViewController" customModule="Pokeping" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CrB-Oh-hGj"/>
                         <viewControllerLayoutGuide type="bottom" id="8qn-L1-cZG"/>
@@ -83,7 +83,7 @@
         <!--Pokémon Picker Controller-->
         <scene sceneID="iKM-XT-euj">
             <objects>
-                <viewController storyboardIdentifier="pokémonPicker" id="JfG-vK-mhU" customClass="PokémonPickerController" customModule="pokemans" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pokémonPicker" id="JfG-vK-mhU" customClass="PokémonPickerController" customModule="Pokeping" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eqg-hd-kte"/>
                         <viewControllerLayoutGuide type="bottom" id="ndJ-No-RVD"/>
@@ -108,7 +108,7 @@
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokémonCell" id="MLY-M5-Jfu" customClass="PokémonCell" customModule="pokemans" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokémonCell" id="MLY-M5-Jfu" customClass="PokémonCell" customModule="Pokeping" customModuleProvider="target">
                                         <rect key="frame" x="10" y="10" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -144,7 +144,7 @@
                             <constraint firstAttribute="trailing" secondItem="PaY-6p-hxF" secondAttribute="trailing" id="h6b-EE-bmT"/>
                             <constraint firstItem="ypN-mJ-NyM" firstAttribute="leading" secondItem="WXc-ey-2dj" secondAttribute="leading" id="jZf-4L-DWF"/>
                             <constraint firstAttribute="trailing" secondItem="jqn-Y5-OlP" secondAttribute="trailing" id="oi1-1m-oYR"/>
-                            <constraint firstItem="jqn-Y5-OlP" firstAttribute="top" secondItem="eqg-hd-kte" secondAttribute="bottom" id="reE-qD-eBi"/>
+                            <constraint firstItem="jqn-Y5-OlP" firstAttribute="top" secondItem="PaY-6p-hxF" secondAttribute="bottom" id="qCJ-Wf-8ne"/>
                             <constraint firstItem="PaY-6p-hxF" firstAttribute="top" secondItem="eqg-hd-kte" secondAttribute="bottom" id="wBi-nU-7rZ"/>
                             <constraint firstItem="PaY-6p-hxF" firstAttribute="leading" secondItem="WXc-ey-2dj" secondAttribute="leading" id="wfu-p5-oHa"/>
                         </constraints>
