@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01029D431D7C810A004D5348 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01029D421D7C810A004D5348 /* Action.framework */; };
 		01029D461D7C8658004D5348 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01029D451D7C8658004D5348 /* RxBlocking.framework */; };
 		01060E411D85A86B0072CECC /* GeolocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01060E401D85A86B0072CECC /* GeolocationService.swift */; };
 		01060E441D85A88F0072CECC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01060E431D85A88F0072CECC /* CoreLocation.framework */; };
@@ -48,7 +47,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01029D421D7C810A004D5348 /* Action.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Action.framework; path = Carthage/Build/iOS/Action.framework; sourceTree = "<group>"; };
 		01029D451D7C8658004D5348 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		01060E401D85A86B0072CECC /* GeolocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeolocationService.swift; sourceTree = "<group>"; };
 		01060E431D85A88F0072CECC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -90,7 +88,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				01060E441D85A88F0072CECC /* CoreLocation.framework in Frameworks */,
-				01029D431D7C810A004D5348 /* Action.framework in Frameworks */,
 				01804D9A1D6730E40048A927 /* RxDataSources.framework in Frameworks */,
 				01F107C11D523E6D00844061 /* libz.tbd in Frameworks */,
 				01D7DA141D65F1D9000458F6 /* RxSwift.framework in Frameworks */,
@@ -194,7 +191,6 @@
 			children = (
 				01060E431D85A88F0072CECC /* CoreLocation.framework */,
 				01029D451D7C8658004D5348 /* RxBlocking.framework */,
-				01029D421D7C810A004D5348 /* Action.framework */,
 				01804D991D6730E40048A927 /* RxDataSources.framework */,
 				01D7DA0F1D65F1D9000458F6 /* RxCocoa.framework */,
 				01D7DA101D65F1D9000458F6 /* RxSwift.framework */,
@@ -331,7 +327,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Action.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
 			);
 			name = "Run Script";

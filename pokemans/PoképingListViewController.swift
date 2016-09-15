@@ -10,7 +10,6 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxDataSources
-import Action
 import CoreLocation
 
 
@@ -87,7 +86,9 @@ class PoképingListViewController: UIViewController {
         let pokémonSelection = addPokémonButton.rx.tap
             .flatMapLatest {[weak self] _ in
                 return Reactive<PokémonPickerController>.create(parent: self)
-                    .flatMap { $0.rx.didSelectPokémon }.take(1)
+                    .flatMap { picker in
+                        picker.rx.didSelectPokémon
+                    }.take(1)
             }
             .do(onNext: {[weak self] _ in self?.dismiss(animated: true, completion: nil) })
             .observeOn(MainScheduler.instance)
